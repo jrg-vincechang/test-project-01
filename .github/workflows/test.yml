@@ -35,4 +35,4 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo workspace: {$GITHUB_WORKSPACE}
-          echo EXAMPLE_VAR: {EXAMPLE_VAR}
+          echo EXAMPLE_VAR: {$EXAMPLE_VAR}
