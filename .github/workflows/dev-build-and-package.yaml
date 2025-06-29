@@ -57,7 +57,13 @@ jobs:
           path: deploy-package.zip
 
       - name: 觸發 Do Some Deployment workflow
-        uses: peter-evans/workflow-dispatch@v1
+        uses: actions/github-script@v6
         with:
-          workflow: dev-deployment.yaml
-          ref: dev
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: 'test-project-01',  # Replace with your target repo name
+              workflow_id: 'dev-deployment.yml', # Replace with your target workflow name
+              ref: 'dev' # Optional, specify branch if needed
+            })
