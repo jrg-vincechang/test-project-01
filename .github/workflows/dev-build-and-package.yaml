@@ -57,7 +57,7 @@ jobs:
           path: deploy-package.zip
 
       - name: 觸發 Do Some Deployment workflow
-        uses: peter-evans/workflow-dispatch@v2
+        uses: peter-evans/workflow-dispatch@v1
         with:
           workflow: dev-deployment.yaml
           ref: dev
