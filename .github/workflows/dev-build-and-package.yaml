@@ -46,7 +46,7 @@ jobs:
       - name: Build and package
         run: |
           mkdir build
-          cp -r /source-code/* build/
+          cp -r source-code/* build/
           cd build
           zip -r ../deploy-package.zip .
 
