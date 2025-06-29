@@ -27,7 +27,7 @@ jobs:
       - name: Build and package
         run: |
           mkdir build
-          cp -r * build/
+          cp -r $GITHUB_WORKSPACE/* build/
           cd build
           zip -r ../deploy-package.zip .
 
