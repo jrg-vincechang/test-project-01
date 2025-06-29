@@ -36,5 +36,5 @@ jobs:
           echo test, and deploy your project.
           echo workspace: $GITHUB_WORKSPACE
           echo EXAMPLE_VAR: $EXAMPLE_VAR
-          echo GITHUBENV_VAR1: ${{ vars.GITHUBENV_VAR1 }}
+          echo GITHUBENV_VAR1: ${{ dev.vars.GITHUBENV_VAR1 }}
           echo TESTPD: ${{ secrets.TESTPD }}
