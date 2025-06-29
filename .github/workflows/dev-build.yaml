@@ -1,9 +1,9 @@
 name: Build and Package
 
 on:
-  push:
+#  push:
 #    branches: [ "dev" ]
-  workflow_dispatch:
+#  workflow_dispatch:
 
 jobs:
   build-and-package:
