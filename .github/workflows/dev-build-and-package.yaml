@@ -16,15 +16,15 @@ jobs:
           path: source-code
 
       #      - name: Set up PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: '8.2'
+      #        uses: shivammathur/setup-php@v2
+      #        with:
+      #          php-version: '8.2'
 
-#      - name: Install dependencies
-#        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+      #      - name: Install dependencies
+      #        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-#      - name: Run tests
-#        run: composer test || true
+      #      - name: Run tests
+      #        run: composer test || true
 
       - name: show github workspace
         run: |
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: deploy-package
-          path: { $GITHUB_WORKSPACE }/build/*
+          path: ${{GITHUB_WORKSPACE}}/build/*
 
 #      - name: 觸發 Do Some Deployment workflow
 #        uses: actions/github-script@v6
