@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: deploy-package
-          path: $GITHUB_WORKSPACE/build/
+          path: { $GITHUB_WORKSPACE }/build/
 
 #      - name: 觸發 Do Some Deployment workflow
 #        uses: actions/github-script@v6
