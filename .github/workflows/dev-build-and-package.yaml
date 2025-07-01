@@ -59,12 +59,12 @@ jobs:
 
       - name: Check Variables
         run: |
-          echo "TOKEN1: ${{ vars.GHUB_TOKEN }}"
+          echo "TOKEN1: ${{ vars.GITHUBENV_VAR1 }}"
 
       - name: 觸發 Do Some Deployment workflow
         uses: actions/github-script@v6
         with:
-          github-token: ${{ vars.GHUB_TOKEN }}
+          github-token: ${{ vars.GITHUBENV_VAR1 }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
