@@ -56,6 +56,11 @@ jobs:
           name: deploy-package
           path: build/
 
+      - name: Check Github Token
+        run: |
+          echo "Github Token: ${{ secrets.GITHUB_TOKEN }}"
+            
+
       - name: 觸發 Do Some Deployment workflow
         uses: actions/github-script@v6
         with:
