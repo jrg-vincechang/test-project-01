@@ -64,7 +64,15 @@ jobs:
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
-              repo: 'test-project-01',  # Replace with your target repo name
-              workflow_id: 'dev-deployment.yaml', # Replace with your target workflow name
-              ref: 'dev' # Optional, specify branch if needed
+              repo: 'test-project-01',
+              workflow_id: 'dev-deployment.yaml',
+              ref: 'dev'
             })
+            
+
+#            github.rest.actions.createWorkflowDispatch({
+#              owner: context.repo.owner,
+#              repo: 'test-project-01',  # Replace with your target repo name
+#              workflow_id: 'dev-deployment.yaml', # Replace with your target workflow name
+#              ref: 'dev' # Optional, specify branch if needed
+#            })
