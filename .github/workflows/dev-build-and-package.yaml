@@ -57,18 +57,14 @@ jobs:
           name: deploy-package
           path: build/
 
-      - name: Check Variables
-        run: |
-          echo "TOKEN1: ${{ vars.GITHUBENV_VAR1 }}"
-
       - name: 觸發 Do Some Deployment workflow
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
-          github-token: ${{ vars.GITHUBENV_VAR1 }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: 'test-project-01',  # Replace with your target repo name
-              workflow_id: 'dev-deployment.yml', # Replace with your target workflow name
+              workflow_id: 'dev-deployment.yaml', # Replace with your target workflow name
               ref: 'dev' # Optional, specify branch if needed
             })
