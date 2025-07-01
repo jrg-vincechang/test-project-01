@@ -57,6 +57,7 @@ jobs:
           path: build/
 
       - name: Check Github Token
+        if: secrets.GH_TOKEN != ''
         run: |
           echo "Github Token: ${{ secrets.GITHUB_TOKEN }}"
             
