@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 取得 BUILD_JOB_ID
-        run: echo "BUILD_JOB_ID=${{ github.event.inputs.BUILD_JOB_ID }}"
+        run: echo "BUILD_JOB_ID=${{ steps.build_data.outputs.build_job_id }}"
 
       - name: 下載 artifact
         uses: actions/download-artifact@v4
         with:
-          artifact-ids: ${{ github.event.inputs.BUILD_JOB_ID }}
+          artifact-ids: ${{ steps.build_data.outputs.build_job_id }}
 
       - name: 部署步驟
         run: |
