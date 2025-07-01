@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 取得 BUILD_JOB_ID
-        run: echo "BUILD_JOB_ID=${{ github.event.workflow_run.id }}"
+        run: echo "BUILD_JOB_ID=${{ github.event.inputs.BUILD_JOB_ID }}"
 
       - name: 下載 artifact
         uses: actions/download-artifact@v4
