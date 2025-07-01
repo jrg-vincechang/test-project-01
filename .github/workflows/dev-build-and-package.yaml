@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-and-package:
+    environment: dev
     runs-on: ubuntu-latest
 
     steps:
@@ -56,11 +57,9 @@ jobs:
           name: deploy-package
           path: build/
 
-      - name: Check Github Token
-        if: ${{ secrets.GH_TOKEN != '' }}
+      - name: Check Variables
         run: |
-          echo "Github Token: ${{ secrets.GITHUB_TOKEN }}"
-            
+          echo "TOKEN: $TOKEN"
 
       - name: 觸發 Do Some Deployment workflow
         uses: actions/github-script@v6
