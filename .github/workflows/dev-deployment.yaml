@@ -14,7 +14,7 @@ jobs:
       - name: 下載 artifact
         uses: actions/download-artifact@v4
         with:
-          name: deploy-package
+          artifact-ids: ${{ github.event.inputs.my_param }}
 
       - name: 部署步驟
         run: |

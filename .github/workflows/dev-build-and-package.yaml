@@ -4,6 +4,11 @@ on:
   push:
     branches: [ "dev" ]
   workflow_dispatch:
+    inputs:
+      BUILD_JOB_ID:
+        description: 'BUILD_JOB_ID'
+        required: true
+        default: $GITHUB_RUN_ID
 
 jobs:
   build-and-package:
