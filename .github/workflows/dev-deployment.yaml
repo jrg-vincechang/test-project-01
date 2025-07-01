@@ -1,13 +1,6 @@
 name: Do Some Deployment
 
 on:
-  workflow_dispatch:
-    inputs:
-      job_run_id:
-        description: 'The job run ID to use for deployment'
-        required: true
-        default: 'default-job-run-id'
-
   workflow_run:
     workflows: ["Build and Package"]
     types:
@@ -19,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 取得 BUILD_JOB_ID
-        run: echo "BUILD_JOB_ID=${{ github.event.workflow_run.input.build_id }}" >> $GITHUB_ENV
+        run: echo "BUILD_JOB_ID=${{ github.event.inputs.job_run_id }}" >> $GITHUB_ENV
 
       - name: 下載 artifact
         uses: actions/download-artifact@v4
         with:
-          artifact-ids: ${{ github.event.workflow_run.input.build_id }}
+          artifact-ids: ${{ github.event.inputs.job_run_id }}
 
       - name: 部署步驟
         run: |
