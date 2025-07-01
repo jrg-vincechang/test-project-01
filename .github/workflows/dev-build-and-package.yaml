@@ -57,17 +57,17 @@ jobs:
           name: deploy-package
           path: build/
 
-      - name: 觸發 Do Some Deployment workflow
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: 'test-project-01',
-              workflow_id: 'dev-deployment.yaml',
-              ref: 'dev'
-            })
+#      - name: 觸發 Do Some Deployment workflow
+#        uses: actions/github-script@v7
+#        with:
+#          github-token: ${{ secrets.GH_TOKEN }}
+#          script: |
+#            github.rest.actions.createWorkflowDispatch({
+#              owner: context.repo.owner,
+#              repo: 'test-project-01',
+#              workflow_id: 'dev-deployment.yaml',
+#              ref: 'dev'
+#            })
             
 
 #            github.rest.actions.createWorkflowDispatch({
