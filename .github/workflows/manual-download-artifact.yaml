@@ -2,6 +2,14 @@ name: manual-download-artifact.yaml
 on:
   workflow_dispatch:
     inputs:
+      repository:
+        description: 'Repository to download artifact from'
+        required: true
+        default: 'Repository Name'
+      artifact_name:
+        description: 'Artifact name to download'
+        required: true
+        default: 'Artifact Name'
       run_id:
         description: 'Run ID'
         required: true
@@ -14,8 +22,8 @@ jobs:
           - name: 下載特定 artifact
             uses: actions/download-artifact@v4
             with:
-              name: dev-build-and-package.yaml
+              name: ${{ github.event.inputs.artifact_name }}
               github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
-              repository: jrg-vincechang/test-project-01
+              repository: ${{ github.event.inputs.repository }}
               run-id: ${{ github.event.inputs.run_id }}
 
