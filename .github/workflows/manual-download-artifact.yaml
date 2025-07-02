@@ -1,0 +1,18 @@
+name: manual-download-artifact.yaml
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_id:
+        description: 'Artifact ID'
+        required: true
+        default: 'deploy-package'
+
+jobs:
+    download-artifact:
+        runs-on: ubuntu-latest
+        steps:
+          - name: 下載特定 artifact
+            uses: actions/download-artifact@v4
+            with:
+              artifact-ids: ${{ github.event.inputs.artifact_id }}
+
