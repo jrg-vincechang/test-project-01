@@ -11,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      build_id: ${{ steps.build_step.id }}
-      job_run_id: $GITHUB_RUN_ID
+      ARTIFACT_NAME: $ARTIFACT_NAME
+      JOB_RUN_ID: $GITHUB_RUN_ID
 
     steps:
+      - name: 設定動態變數
+        run: echo "ARTIFACT_NAME=$environment-package" >> $GITHUB_ENV
+
       - name: 构建步骤
         id: build_step
         run: |
@@ -63,7 +66,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: deploy-package
+          name: $ARTIFACT_NAME
           path: build/
 
             #      - name: 觸發 Do Some Deployment workflow

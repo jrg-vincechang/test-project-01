@@ -2,15 +2,11 @@ name: manual-download-artifact.yaml
 on:
   workflow_dispatch:
     inputs:
-      repository:
-        description: 'Repository to download artifact from'
-        required: true
-        default: 'Repository Name'
-      artifact_name:
+      ARTIFACT_NAME:
         description: 'Artifact name to download'
         required: true
         default: 'Artifact Name'
-      run_id:
+      JOB_RUN_ID:
         description: 'Run ID'
         required: true
         default: 'Run ID'
@@ -22,8 +18,14 @@ jobs:
           - name: 下載特定 artifact
             uses: actions/download-artifact@v4
             with:
-              name: ${{ github.event.inputs.artifact_name }}
+              name: ${{ github.event.inputs.ARTIFACT_NAME }}
               github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
-              repository: ${{ github.event.inputs.repository }}
-              run-id: ${{ github.event.inputs.run_id }}
+              repository: $GITHUB_REPOSITORY
+              run-id: ${{ github.event.inputs.JOB_RUN_ID }}
+
+          - name: 列出下載的檔案
+            run: |
+              echo "Downloaded files:"
+              ls -R
+              echo "Download complete."
 
