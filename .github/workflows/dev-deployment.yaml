@@ -1,24 +1,30 @@
 name: Do Some Deployment
-
 on:
-  workflow_run:
-    workflows: ["Build and Package"]
-    types:
-      - completed
+  workflow_dispatch:
+    inputs:
+      ARTIFACT_NAME:
+        description: 'Artifact name to download'
+        required: true
+        default: 'Artifact Name'
+      JOB_RUN_ID:
+        description: 'Run ID'
+        required: true
+        default: 'Run ID'
 
 jobs:
-  deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  download-artifact:
     runs-on: ubuntu-latest
     steps:
-      - name: 取得 BUILD_JOB_ID
-        run: echo "BUILD_JOB_ID=${{ github.event.inputs.job_run_id }}" >> $GITHUB_ENV
-
-      - name: 下載 artifact
+      - name: 下載特定 artifact
         uses: actions/download-artifact@v4
         with:
-          artifact-ids: 16004412877
+          name: ${{ github.event.inputs.ARTIFACT_NAME }}
+          github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
+          repository: $GITHUB_REPOSITORY
+          run-id: ${{ github.event.inputs.JOB_RUN_ID }}
 
-      - name: 部署步驟
+      - name: 列出下載的檔案
         run: |
-          echo "開始部署"
+          echo "Downloaded files:"
+          ls -R
+          echo "Download complete."
