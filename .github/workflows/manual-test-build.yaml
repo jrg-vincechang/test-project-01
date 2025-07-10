@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, kiosk-runner]
     steps:
       - uses: actions/checkout@v4
         with:
