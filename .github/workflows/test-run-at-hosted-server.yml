@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: [service18-kiosk]
+    runs-on: [kfc-byod]
     steps:
       - uses: actions/checkout@v4
 
