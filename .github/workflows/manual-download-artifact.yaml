@@ -20,7 +20,7 @@ jobs:
             with:
               name: ${{ github.event.inputs.ARTIFACT_NAME }}
               github-token: ${{ secrets.GH_TOKEN }} # token with actions:read permissions on target repo
-              repository: $GITHUB_REPOSITORY
+              repository: ${{ github.repository }}
               run-id: ${{ github.event.inputs.JOB_RUN_ID }}
 
           - name: 列出下載的檔案
